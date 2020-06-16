@@ -1,18 +1,47 @@
 import React, {useState} from 'react';
 import Form from './Form';
+import {v4} from 'uuid';
 import './App.css';
 
 const foundingMembers = [
   //keys of name, email, and role (select)
-  {name: 'El Jefe', email: 'management@superheroteam.org', role: 'Team Leader'},
-  {name: 'Fantabulous', email: 'very-dazzling@superheroteam.org', role: 'Layout Designer'},
-  {name: 'Rubik\'s Cube', email: 'always-sorting@superheroteam.org', role: 'Database Maintenance'},
-  {name: 'Shocklamp', email: 'bugzap@superheroteam.org', role: 'Error-Proofing / Debugger'},
-  {name: 'The Janitor', email: 'cleanup-isle-four@superheroteam.org', role: 'Garbage Collector'},
+  {id: v4(), hName: 'El Jefe', email: 'management@superheroteam.org', role: 'Team Leader'},
+  {id: v4(), hName: 'Fantabulous', email: 'very-dazzling@superheroteam.org', role: 'Layout Designer'},
+  {id: v4(), hName: 'Rubik\'s Cube', email: 'always-sorting@superheroteam.org', role: 'Database Maintenance'},
+  {id: v4(), hName: 'Shocklamp', email: 'bugzap@superheroteam.org', role: 'Error-Proofing / Debugger'},
+  {id: v4(), hName: 'The Janitor', email: 'cleanup-isle-four@superheroteam.org', role: 'Garbage Collector'},
 ];
+
+//From class notes
+const blankValues = {hName: '', email: '', role: ''};
 
 function App() {
   const [superHeroTeamMembers, draftTeamMembers] = useState(foundingMembers);
+
+  //From class notes
+  const [enteredValues, updateFormValues] = useState(blankValues);
+
+  //From class notes
+  const changedInput = function(event) {
+    const {name, value} = event.target;
+
+    updateFormValues({...enteredValues, [name]: value})
+  }
+
+  //From class notes
+  const clickedSubmit = function(submitEvent) {
+    submitEvent.preventDefault();
+
+    const applicant = {
+      id: v4(),
+      hName: enteredValues.hName.trim(),
+      email: enteredValues.email.trim(),
+      role: enteredValues.role
+    };
+
+    draftTeamMembers([...superHeroTeamMembers, applicant]);
+    updateFormValues(blankValues);
+  }
 
   return (
     <div className="App">
@@ -20,10 +49,10 @@ function App() {
           <h2>Super Hero Development Team!</h2>
           <h3>Now Recruiting</h3>
         </div>
-        <Form />
+        <Form values={enteredValues} inputted={changedInput} submitted={clickedSubmit} />
         <div>
           {superHeroTeamMembers.map(hero => (
-            <HeroDetails hero={hero} />
+            <HeroDetails key={hero.id} hero={hero} />
           ))}
         </div>
     </div>
@@ -31,10 +60,10 @@ function App() {
 }
 
 function HeroDetails({hero}) {
-  const {name, email, role} = hero;
+  const {hName, email, role} = hero;
   return (
     <div>
-      <h4>Name: {name}</h4>
+      <h4>Name: {hName}</h4>
       <p>Contact: {email}</p>
       <p>Special Ability: {role}</p>
       <br />

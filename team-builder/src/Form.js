@@ -1,18 +1,21 @@
 import React from 'react';
 
 const Form = props => {
+    //From class notes
+    const {values, inputted, submitted} = props;
+
     return (
         <div>
-            <form>
+            <form onSubmit={submitted}>
                 <label>Stage Name:&nbsp;</label>
-                <input type="text" />
+                <input type="text" name="hName" value={values.hName} onChange={inputted} maxLength="15" required />
                 <br />
                 <label>Email:&nbsp;</label>
-                <input type="text" />
+                <input type="email" id="emailAddr" name="email" value={values.email} onChange={inputted} required />
                 <br />
                 <label>Special Ability:&nbsp;</label>
-                <select>
-                    <option value=''>--- Select One ---</option>
+                <select name="role" value={values.role} onChange={inputted} required>
+                    <option>--- Select One ---</option>
                     <option value='Graphics Designer'>Graphics Designer</option>
                     <option value='Intern'>Intern</option>
                     <option value='Front-End Developer'>Front-End Developer</option>
