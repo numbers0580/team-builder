@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Form from './Form';
 import {v4} from 'uuid';
-import './App.css';
+//import './App.css';
 
 const foundingMembers = [
   //keys of name, email, and role (select)
@@ -46,8 +46,8 @@ function App() {
   return (
     <div className="App">
         <div>
-          <h2>Super Hero Development Team!</h2>
-          <h3>Now Recruiting</h3>
+          <h1>Super Hero Development Team!</h1>
+          <h2>Now Recruiting</h2>
         </div>
         <Form values={enteredValues} inputted={changedInput} submitted={clickedSubmit} />
         <div>
@@ -62,8 +62,8 @@ function App() {
 function HeroDetails({hero}) {
   const {hName, email, role} = hero;
   return (
-    <div>
-      <h4>Name: {hName}</h4>
+    <div className='herocard'>
+      <h3>Name: {hName}</h3>
       <p>Contact: {email}</p>
       <p>Special Ability: {role}</p>
       <br />
