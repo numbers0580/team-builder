@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  color: #0000CC;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3 {
+  color: #600060;
+}
+		
+form {
+  margin: 10% 0;
+}
+
+.App {
+  padding: 0.5% 2%;
+  width: 500px;
+}
+		
+.formBox {
+  display: flex;
+}
+		
+.formBox div {
+  min-width: 120px;
+  padding: 5px;
+}
+		
+button {
+  margin: 5px;
+}
+		
+.herocard {
+  border: 4px solid yellow;
+  border-radius: 20px;
+  box-shadow: -5px 10px 10px #ff8040;
+  background-color: gold;
+  padding: 0 5%;
+  margin: 5% 0;
+}
